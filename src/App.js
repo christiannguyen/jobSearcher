@@ -19,6 +19,7 @@ class App extends Component {
       url: [],
       snippet: [],
       jobs: []
+      
     };
     
 
@@ -50,11 +51,15 @@ class App extends Component {
         const jobs = response.data.results.map((x,index) => 
         <div className="diff-jobs-container container-fluid">
           <div className="row info">
-            <h2 className="job-name" key={x.jobtitle} >{x.jobtitle}</h2>
-            <h3 className="company-name" key={x.company}>{x.company}</h3>
+            <h2 className="job-name" key={x.jobtitle} >{x.jobtitle}<span className="date-posted-since">{x.formattedRelativeTime}</span></h2>
+            <h3 className="company-name" key={x.company}>{x.company}<span className="company-location"> {x.formattedLocationFull}</span></h3>
+            <p className="date-posted">Date Posted: {x.date.substring(0,17)}</p>
           </div>
           <div className="row short-description">
-            <p key={x.snippet.substring(0,3)} >{x.snippet}</p>
+            <p key={x.snippet.substring(0,3)}>{x.snippet}</p>
+          </div>
+          <div className="row url-link">
+            <a href={x.url} target="_blank" className="job-url">Posting</a>
           </div>
         </div>);        
         

@@ -33,11 +33,24 @@ class Search extends Component{
     render(){
         return(
             <div onKeyDown={this.handleKeyPress.bind(this)} className="search-container">
-                
+                <div className="search">
+                    <span className="right-inner-addon">
+                        <i className="glyphicon glyphicon-briefcase"></i>
+                        <input type="text" onChange={this.handleTitleChange.bind(this)} placeholder="Job Title" value={this.state.title}/>
+                    </span>
+                    <span className="right-inner-addon">
+                        <i className="glyphicon glyphicon-globe"></i>
+                        <input type="text" onChange={this.handleLocationChange.bind(this)} placeholder="City, State, or Zipcode" value={this.state.location}/>
+                    </span>
+                    <span>
+                         <button onClick={this.updateJobSearch.bind(this)} className="search-button">Search</button>
+                    </span>
+                 </div>     
+                { /*
                 <input type="text" onChange={this.handleTitleChange.bind(this)} placeholder="Job Title" value={this.state.title}/>
                 <input type="text" onChange={this.handleLocationChange.bind(this)} placeholder="Job Location" value={this.state.location}/>
                 <button onClick={this.updateJobSearch.bind(this)} className="search-button">Search</button>
- 
+                */}
             </div>
         );
     }

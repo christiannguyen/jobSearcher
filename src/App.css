@@ -8,8 +8,8 @@
 }
 
 body{
-  background-color: #C3E6F7;
-  color: black;
+  background-color: #3EA3A3 ;
+  color: #EEF9F9;
 }
 
 /* HEADER */
@@ -36,21 +36,52 @@ body{
   display: block;
   margin: 0 auto;
   width: 75%;
-  background-color: gray;
+  background-color: #3EA3A3;
   height: 125px;
   padding-top: 3%;
   margin-bottom: 5%;
 }
 .search-container input{
   margin: 0 0.5%;
+  color: black;
   width: 300px;
   padding: 7px;
 }
 .search-container button{
-  padding: 10px 20px;
+  color: #EEF9F9;
+  margin-left: 1%;
+  border-radius: 2px;
+  padding: 6px 20px;
   border: 1px solid white;
-  background-color: #C3E6F7;
+  background-color: transparent;
+  font-size: 1.15em;
+  letter-spacing: 1.2px;
+  transition: all 0.5s ease;
+  
 }
+.search-container button:hover{
+  background-color: #307F7F;
+  transition: all 0.5s ease;
+}
+
+.right-inner-addon{
+  position: relative;
+}
+.right-inner-addon input{
+  padding-left: 30px;
+}
+.right-inner-addon i{
+  color: black;
+  position: absolute;
+  left: 0px;
+  padding: 0 12px;
+  pointer-events: none;
+}
+
+.search-button {
+  cursor: pointer;
+}
+
 
 
 
@@ -60,16 +91,61 @@ body{
 }
 .joblist-container .diff-jobs-container {
   font-family: 'Lato', sans-serif;
-  margin: 3px auto;
+  margin: 40px auto;
+  margin-bottom: -15px;
   display: block;
-  width: 70%;
-  border-top: 1px solid black;
+  width: 65%;
+  border-top: 1px solid #307F7F;
 }
 .joblist-container .diff-jobs-container h2{
-  margin-top: 0.5%;
+  margin-top: 1%;
   margin-bottom: 0;
+  font-weight: 1200;
+  font-size: 1.8em;
+  color: #FFF;
+}
+.joblist-container .diff-jobs-container h3{
+  font-size: 1.4em;
+  opacity: 0.8  
+}
+.joblist-container .diff-jobs-container .short-description{
+  font-size: 1.3em;
+  width: 60%;
+}
+.joblist-container .diff-jobs-container .date-posted-since {
+  float: right;
+  padding-top: 5px;
+  font-size: 0.55em;
+}
+.joblist-container .diff-jobs-container .company-location {
+  padding-left: 12px;
+  font-size: 0.65em;
+  opacity: 0.7;
 }
 .joblist-container .diff-jobs-container h3{
   margin: 0;
   margin-bottom: 1%;
+  width: 45%;
+}
+.joblist-container .diff-jobs-container .url-link{
+  float: right;
+}
+.joblist-container .diff-jobs-container .url-link a{
+ display: block;
+ height: 35px;
+ margin-top: 15px;
+ color: white;
+ border-radius: 3px;
+ width: 100px;
+ text-align: center;
+ font-size: 1.1em;
+ padding: 5px;
+ border: 1px solid white;
+ transition: all 0.5s ease;
+ 
+}
+.joblist-container .diff-jobs-container .url-link a:hover{
+  text-decoration: none;
+  background-color: #307F7F;
+  transition: all 0.5s ease;
 }

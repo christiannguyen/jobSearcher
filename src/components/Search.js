@@ -22,12 +22,22 @@ class Search extends Component{
         this.props.fetchJobs(title,location);
     }
 
+    handleKeyPress(e){
+        const title = this.state.title;
+        const location = this.state.location;
+
+        if(e.keyCode === 13)
+            this.props.fetchJobs(title,location);
+    }
+
     render(){
         return(
-            <div className="search-container">
+            <div onKeyDown={this.handleKeyPress.bind(this)} className="search-container">
+                
                 <input type="text" onChange={this.handleTitleChange.bind(this)} placeholder="Job Title" value={this.state.title}/>
                 <input type="text" onChange={this.handleLocationChange.bind(this)} placeholder="Job Location" value={this.state.location}/>
-                <button onClick={this.updateJobSearch.bind(this)} className="btn btn-default"> Search </button>
+                <button onClick={this.updateJobSearch.bind(this)} className="search-button">Search</button>
+ 
             </div>
         );
     }

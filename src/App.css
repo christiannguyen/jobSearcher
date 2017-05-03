@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Lato');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #C3E6F7;
+  color: black;
+}
+
+/* HEADER */
+
+.header-container{
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  margin: 3% 0;
+}
+.header-container h1{
+  font-size: 4em;
+  font-weight: 700;
+}
+.header-container p{
+  font: .95em 'Lato', sans-serif;
+  display: inline-block;
+  margin: 1%; 
+  width: 33%;
+}
+
+/* SEARCH */
+.search-container{
+  text-align: center;
+}
+.search-container input{
+  margin: 0 0.5%;
+}
+.search-container button{
+  padding: 5px;
+  border-radius: 10px;  
+}

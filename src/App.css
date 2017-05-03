@@ -20,14 +20,16 @@ body{
   margin: 3% 0;
 }
 .header-container h1{
-  font-size: 4em;
+  font-size: 5.5em;
   font-weight: 700;
+  letter-spacing: 2 px;
 }
 .header-container p{
   font: .95em 'Lato', sans-serif;
   display: inline-block;
-  margin: 1%; 
+  margin: 0.3%; 
   width: 33%;
+  transition: all 0.5s ease;  
 }
 
 /* SEARCH */
@@ -109,6 +111,7 @@ body{
   opacity: 0.8  
 }
 .joblist-container .diff-jobs-container .short-description{
+  padding-top: 15px;
   font-size: 1.3em;
   width: 60%;
 }
@@ -148,4 +151,5 @@ body{
   text-decoration: none;
   background-color: #307F7F;
   transition: all 0.5s ease;
+  cursor: pointer;
 }

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Search from './components/Search';
 import Header from './components/Header';
 import Joblist from './components/Joblist';
+import Filter from './components/Filter';
 
 
 
@@ -18,8 +19,9 @@ class App extends Component {
       dateSince: [],
       url: [],
       snippet: [],
-      jobs: []
-      
+      jobs: [],
+      locationfilter: [],
+      height: window.innerHeight
     };
     
 
@@ -27,19 +29,37 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.fetchJobs('','');
+    this.fetchJobs(' ',' ','');
+    this.fetchCities();
   }
 
-  fetchJobs(title, location){
+  hey(){
+    console.log('hey');
+  }
+
+  fetchCities(){
+    axios.get('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+      .then(response => {
+        
+        const locationfilter = response.data.map(x => x);
+        this.setState({locationfilter});
+        console.log('location state', this.state.locationfilter);
+      });
+    }
+
+  fetchJobs(title, location,position){
     
     const config = {
       headers: {'X-Mashape-Authorization': 'E1L7w8FFovmshox2kJWK2tZWjnD3p1prLkUjsn9QJHoI0lQyc8'}
       };
 //    axios.get('https://indeed-indeed.p.mashape.com/apisearch?publisher=1483245056846548&callback=<required>&chnl=<required>&co=<required>&filter=<required>&format=json&fromage=<required>&highlight=<required>&jt=<required>&l=austin%2C+tx&latlong=<required>&limit=25&q=java&radius=50&sort=<required>&st=<required>&start=<required>&useragent=<required>&userip=<required>&v=2',config)  
-    axios.get(`https://indeed-indeed.p.mashape.com/apisearch?publisher=1483245056846548&callback=<required>&chnl=<required>&co=<required>&filter=<required>&format=json&fromage=<required>&highlight=<required>&jt=<required>&l=${location}&latlong=<required>&limit=25&q=${title}&radius=50&sort=<required>&st=<required>&start=<required>&useragent=<required>&userip=<required>&v=2`,config)
+    axios.get(`https://indeed-indeed.p.mashape.com/apisearch?publisher=1483245056846548&callback=<required>&chnl=<required>&co=<required>&filter=<required>&format=json&fromage=<required>&highlight=<required>&jt=${position}&l=${location}&latlong=<required>&limit=25&q=${title}&radius=50&sort=<required>&st=<required>&start=<required>&useragent=<required>&userip=<required>&v=2`,config)
       .then( response => {
         // response.results.length === 0 ? console.log('empty') : console.log('not empty');
         // console.log(response.data);
+        // if(response.data.results.length === 0){
+        //   console.log('error');
+        // }
         console.log('results', response.data.results);
 
         const jobTitle = response.data.results.map(x => <div>{x.jobtitle}</div>);
@@ -78,12 +98,20 @@ class App extends Component {
           dateSince,
           jobs
         });
-        console.log(this.state.jobs);
         
+        const windowHeight = document.getElementsByClassName('joblist-container')[0].offsetHeight;
+        console.log(windowHeight);
+        // console.log(this.state.jobs);
     });  
   }
 
   render() {
+    document.addEventListener('scroll', () => {
+      let x =  window.pageYOffset;
+      if(x > 5000)
+        this.hey();
+    });
+    
     return (
       <div className="app-container">
         <Header />

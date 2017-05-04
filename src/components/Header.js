@@ -13,26 +13,32 @@ class Header extends Component{
     }
     componentWillMount(){
         let tipsPos = 0;
+        let len = tipsList.length;
+
         setInterval(() => {
-            if(tipsList.length - 1 > tipsPos){
-                this.setState({
-                    tips: tipsList[tipsPos]
-                })
-                tipsPos++;
-            }
-            else{
-                this.setState({
-                    tips: tipsList[tipsPos]
-                })
-                tipsPos = 0;
-            }
-        },3000);
+            tipsPos = Math.floor(Math.random() * len);
+            this.setState({
+                tips: tipsList[tipsPos]
+            });
+            // if(tipsList.length - 1 > tipsPos){
+            //     this.setState({
+            //         tips: tipsList[tipsPos]
+            //     })
+            //     tipsPos++;
+            // }
+            // else{
+            //     this.setState({
+            //         tips: tipsList[tipsPos]
+            //     })
+            //     tipsPos = 0;
+            // }
+        },2500);
         
     }
     render(){
         return(
             <div className="header-container">
-                <h1> JobHunter</h1>
+                <h1> JobQuest</h1>
                 <p>{this.state.tips}</p>
             </div>
         );

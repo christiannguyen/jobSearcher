@@ -11,15 +11,15 @@ class Search extends Component{
 		}
 
     updateJobSearch = () => {
-				const title = document.querySelectorAll('input')[0].value;
-				const location = document.querySelectorAll('input')[1].value;				
-        const s = document.getElementsByName('positions')[0];
-        let position = s.options[s.selectedIndex].value;
-				
-        if(position === 'all')
-            position = '';
+			const title = document.querySelectorAll('input')[0].value;
+			const location = document.querySelectorAll('input')[1].value;				
+			const s = document.getElementsByName('positions')[0];
+			let position = s.options[s.selectedIndex].value;
+			
+			if(position === 'all')
+					position = '';
 
-        this.props.fetchJobs(title,location,position);
+			this.props.fetchJobs(title,location,position);
     }
 
     handleKeyPress = (e) => {
@@ -36,38 +36,31 @@ class Search extends Component{
         }
     }
 
-    // canFetchMoreJobs(){
-    //     let windowHeight = this.props.joblistHeight;
-    //     console.log('window',windowHeight);
-    //     document.addEventListener('scroll', () => { 
-		// 			let x =  window.pageYOffset;
-    // }
-
     render(){
 			return(
-					<div onKeyDown={this.handleKeyPress} className="search-container">
-							<div className="search row">
-								<select name="positions">
-									<option value="all">All</option>                        
-									<option value="fulltime">Full-Time</option>
-									<option value="parttime">Part-Time</option>
-									<option value="internship">Internship</option>
-									<option value="contract">Contract</option>
-									<option value="temporary">Temporary</option>
-								</select>
-								<span className="right-inner-addon">
-									<i className="glyphicon glyphicon-briefcase"></i>
-									<input type="text" onChange={this.handleChange} placeholder="Job Title"/>
-								</span>
-								<span className="right-inner-addon">
-									<i className="glyphicon glyphicon-globe"></i>
-									<input type="text" onChange={this.handleChange} placeholder="City, State, or Zipcode"/>
-								</span>
-								<span>
-									<button onClick={this.updateJobSearch} className="search-button">Search</button>
-								</span>
-							</div>     
-					</div>
+				<div onKeyDown={this.handleKeyPress} className="search-container">
+					<div className="search row">
+						<select name="positions">
+							<option value="all">All</option>                        
+							<option value="fulltime">Full-Time</option>
+							<option value="parttime">Part-Time</option>
+							<option value="internship">Internship</option>
+							<option value="contract">Contract</option>
+							<option value="temporary">Temporary</option>
+						</select>
+						<span className="right-inner-addon">
+							<i className="glyphicon glyphicon-briefcase"></i>
+							<input type="text" onChange={this.handleChange} placeholder="Job Title"/>
+						</span>
+						<span className="right-inner-addon">
+							<i className="glyphicon glyphicon-globe"></i>
+							<input type="text" onChange={this.handleChange} placeholder="City, State, or Zipcode"/>
+						</span>
+						<span>
+							<button onClick={this.updateJobSearch} className="search-button">Search</button>
+						</span>
+					</div>     
+				</div>
         );
     }
 }
